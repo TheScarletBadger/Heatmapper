@@ -12,7 +12,7 @@ D = D(~ismember({D.name},{'.','..'}));
 carray = [];
 %iterate over files in source directory, append x-y pairs to carray
 for i = 1:length(D)
-    carray = vertcat(carray,readmatrix([source filesep D(i).name]));
+    carray = vertcat(carray,csvread([source filesep D(i).name],2,0));
 end
 %remove extraneous data and NAN
 carray = carray(sum(isnan(carray),2)==0,2:3);
